@@ -1,0 +1,94 @@
+參考的論文連結:
+https://arxiv.org/abs/2104.06378
+參考的web:
+https://snap.stanford.edu/qagnn/
+
+===0. Dependencies======================================================================================
+
+Anaconda在Windows開始選單中選擇Anaconda Prompt
+Step 1:安裝及更新conda
+# 查看目前版本
+conda –V
+# 更新版本
+conda update conda
+
+Step 2:建立虛擬環境
+# 查看環境有哪些
+conda env list
+
+# 建立虛擬環境
+conda create -n qagnn python=3.7
+# 啟動虛擬環境
+conda activate qagnn
+# 可以先看看安裝那些套件
+conda list
+
+conda install pytorch==1.4.0 torchvision==0.5.0 cudatoolkit=10.1 -c pytorch
+pip install numpy==1.18.3 tqdm
+pip install transformers==2.0.0 nltk spacy==2.1.6
+python -m spacy download en
+
+# for torch-geometric
+pip install torch-scatter==2.0.4 -f https://pytorch-geometric.com/whl/torch-1.4.0+cu101.html
+pip install torch-cluster==1.5.4 -f https://pytorch-geometric.com/whl/torch-1.4.0+cu101.html
+pip install torch-sparse==0.6.1 -f https://pytorch-geometric.com/whl/torch-1.4.0+cu101.html
+pip install torch-spline-conv==1.2.0 -f https://pytorch-geometric.com/whl/torch-1.4.0+cu101.html
+pip install torch-geometric==1.6.0 -f https://pytorch-geometric.com/whl/torch-1.4.0+cu101.html
+
+# 關閉虛擬環境
+conda deactivate
+
+Step 5(記錄用略過):刪除虛擬環境或package
+conda remove --name 環境名 numpy
+conda env remove --name 環境名
+
+===1. Download Data======================================================================================
+執行jupyterLab執行terminal並cd到qagnn目錄下執行
+.\download_raw_data.sh
+>>
+我是手動依照download_raw_data.sh下載資料集
+>>
+# 建立data/cpnet存放ConceptNet
+mkdir -p data/
+mkdir -p data/cpnet/
+# download ConceptNet
+wget -nc -P data/cpnet/ https://s3.amazonaws.com/conceptnet/downloads/2018/edges/conceptnet-assertions-5.6.0.csv.gz
+cd data/cpnet/
+yes n | gzip -d conceptnet-assertions-5.6.0.csv.gz
+# download ConceptNet entity embedding
+wget https://csr.s3-us-west-1.amazonaws.com/tzw.ent.npy
+# 回到前前資料夾
+cd ../../
+
+
+
+# 建立data/csqa存放CommensenseQA dataset
+mkdir -p data/csqa/
+# download CommensenseQA dataset
+wget -nc -P data/csqa/ https://s3.amazonaws.com/commensenseqa/train_rand_split.jsonl
+wget -nc -P data/csqa/ https://s3.amazonaws.com/commensenseqa/dev_rand_split.jsonl
+wget -nc -P data/csqa/ https://s3.amazonaws.com/commensenseqa/test_rand_split_no_answers.jsonl
+
+# create output folders
+mkdir -p data/csqa/grounded/
+mkdir -p data/csqa/graph/
+mkdir -p data/csqa/statement/
+
+
+# 建立data/obqa存放OpenBookQA dataset
+# download OpenBookQA dataset
+wget -nc -P data/obqa/ https://s3-us-west-2.amazonaws.com/ai2-website/data/OpenBookQA-V1-Sep2018.zip
+yes n | unzip data/obqa/OpenBookQA-V1-Sep2018.zip -d data/obqa/
+
+# create output folders
+mkdir -p data/obqa/fairseq/official/
+mkdir -p data/obqa/grounded/
+mkdir -p data/obqa/graph/
+mkdir -p data/obqa/statement/
+
+===2. 將資料進行預處理======================================================================================
+python preprocess.py -p <num_processes>
+
+也可以下載作者已經處理好的資料
+https://nlp.stanford.edu/projects/myasu/QAGNN/data_preprocessed_release.zip
+===3. 訓練======================================================================================
