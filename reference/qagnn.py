@@ -1,4 +1,5 @@
 import random
+import traceback
 print ('aaa')
 try:
     from transformers import (ConstantLRSchedule, WarmupLinearSchedule, WarmupConstantSchedule)
@@ -103,6 +104,7 @@ def main():
         except Exception as e:
             print('except')
             print(e)
+            traceback.print_exc()
     elif args.mode == 'eval_detail':
         # raise NotImplementedError
         eval_detail(args)
@@ -156,6 +158,7 @@ def train(args):
             device0 = torch.device("cpu")
             device1 = torch.device("cpu")
             print('train 666')
+        print('train 666--1111')
         dataset = LM_QAGNN_DataLoader(args, args.train_statements, args.train_adj,
                                                args.dev_statements, args.dev_adj,
                                                args.test_statements, args.test_adj,
@@ -165,6 +168,7 @@ def train(args):
                                                max_node_num=args.max_node_num, max_seq_length=args.max_seq_len,
                                                is_inhouse=args.inhouse, inhouse_train_qids_path=args.inhouse_train_qids,
                                                subsample=args.subsample, use_cache=args.use_cache)
+        print('train 666--22222')
         print('train 7777')
         print(dataset)
         ###################################################################################################
@@ -308,26 +312,43 @@ def train(args):
             print('-' * 71)
             with open(log_path, 'a') as fout:
                 fout.write('{},{},{}\n'.format(global_step, dev_acc, test_acc))
+                print('fout.write')
             if dev_acc >= best_dev_acc:
                 best_dev_acc = dev_acc
                 final_test_acc = test_acc
                 best_dev_epoch = epoch_id
                 if args.save_model:
-                    torch.save([model, args], model_path +".{}".format(epoch_id))
+                    print('111save before')
+                    try:
+                        torch.save([model, args], model_path +".{}".format(epoch_id))
+                    except Exception as e:
+                        print('save_model except')
+                        print(e)
+                        torch.save([model.state_dict(), args], model_path +".{}".format(epoch_id))
+                    print('111save after')
                     with open(model_path +".{}.log.txt".format(epoch_id), 'w') as f:
                         for p in model.named_parameters():
                             print (p, file=f)
                     print(f'model saved to {model_path}')
             else:
                 if args.save_model:
-                    torch.save([model, args], model_path +".{}".format(epoch_id))
+                    print('222save before')
+                    try:
+                        torch.save([model, args], model_path +".{}".format(epoch_id))
+                    except Exception as e:
+                        print('save_model except')
+                        print(e)                    
+                        torch.save([model.state_dict(), args], model_path +".{}".format(epoch_id))
+                    print('222save after')
                     with open(model_path +".{}.log.txt".format(epoch_id), 'w') as f:
                         for p in model.named_parameters():
                             print (p, file=f)
                     print(f'model saved to {model_path}')
             model.train()
             start_time = time.time()
+            print('aaaaa model saved')
             if epoch_id > args.unfreeze_epoch and epoch_id - best_dev_epoch >= args.max_epochs_before_stop:
+                print('into break')
                 break
     # except (KeyboardInterrupt, RuntimeError) as e:
     #     print(e)
@@ -335,26 +356,36 @@ def train(args):
 
 
 def eval_detail(args):
+    print('eval_detail start')
     assert args.load_model_path is not None
     model_path = args.load_model_path
+    print('eval_1111')
     model, old_args = torch.load(model_path)
+    print('eval_222')
     if torch.cuda.device_count() >= 2 and args.cuda:
         device0 = torch.device("cuda:0")
         device1 = torch.device("cuda:1")
+        print('eval_3-1')
     elif torch.cuda.device_count() == 1 and args.cuda:
         device0 = torch.device("cuda:0")
         device1 = torch.device("cuda:0")
+        print('eval_3-2')
     else:
         device0 = torch.device("cpu")
         device1 = torch.device("cpu")
+        print('eval_3-3')
+    print('eval_4')
     model.encoder.to(device0)
+    print('eval_5')
     model.decoder.to(device1)
+    print('eval_6')
     model.eval()
+    print('eval_7')
 
     statement_dic = {}
     for statement_path in (args.train_statements, args.dev_statements, args.test_statements):
         statement_dic.update(load_statement_dict(statement_path))
-
+    print('eval_8')
     use_contextualized = 'lm' in old_args.ent_emb
 
     print ('inhouse?', args.inhouse)

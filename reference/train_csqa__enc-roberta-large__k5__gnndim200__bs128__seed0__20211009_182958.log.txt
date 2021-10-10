@@ -1,0 +1,207 @@
+aaa
+z1
+bbb
+111
+cccc
+dddd
+eeee
+44f9644d0a1a
+pid: 14281
+screen: 
+
+gpu: 0,1
+
+train start
+Namespace(att_head_num=2, batch_size=128, cuda=True, dataset='csqa', debug=False, decoder_lr=0.001, dev_adj='data/csqa/graph/dev.graph.adj.pk', dev_statements='data/csqa/statement/dev.statement.jsonl', dropoutf=0.2, dropoutg=0.2, dropouti=0.2, encoder='roberta-large', encoder_layer=-1, encoder_lr=1e-05, ent_emb=['tzw'], ent_emb_paths=['data/cpnet/tzw.ent.npy'], eval_batch_size=2, fc_dim=200, fc_layer_num=0, freeze_ent_emb=True, gnn_dim=200, inhouse=True, inhouse_train_qids='data/csqa/inhouse_split_qids.txt', init_range=0.02, k=5, load_model_path=None, log_interval=10, loss='cross_entropy', lr_schedule='fixed', max_epochs_before_stop=10, max_grad_norm=1.0, max_node_num=200, max_seq_len=100, mini_batch_size=1, mode='train', n_epochs=20, num_relation=38, optim='radam', refreeze_epoch=10000, save_dir='saved_models/csqa/enc-roberta-large__k5__gnndim200__bs128__seed0__20211009_182958', save_model=True, seed=0, simple=False, subsample=1.0, test_adj='data/csqa/graph/test.graph.adj.pk', test_statements='data/csqa/statement/test.statement.jsonl', train_adj='data/csqa/graph/train.graph.adj.pk', train_statements='data/csqa/statement/train.statement.jsonl', unfreeze_epoch=4, use_cache=True, warmup_steps=150, weight_decay=0.01)
+train 11111
+train 222222
+train aaaaa
+[array([[ 0.14546944,  0.06144163,  0.58076036, ..., -0.23021483,
+        -0.06329279,  0.12431484],
+       [ 0.03331704,  0.10365178,  0.7706704 , ..., -0.05123961,
+        -0.28970563, -0.06316865],
+       [-0.279177  ,  0.1306568 ,  0.15783656, ..., -0.273939  ,
+        -0.32336122,  0.12012992],
+       ...,
+       [-0.22461623, -0.4128434 , -0.4113543 , ..., -0.3143878 ,
+         0.15477931,  0.6069955 ],
+       [ 0.42082188,  0.07282558,  0.01273101, ...,  0.12235828,
+        -0.22267364,  0.28397152],
+       [ 0.10134428,  0.40544418,  0.13394867, ...,  0.14023907,
+         0.36362907,  0.4318809 ]], dtype=float32)]
+train 333333
+| num_concepts: 799273 |
+train 5555
+train 666--1111
+train_statement_path data/csqa/statement/train.statement.jsonl
+num_choice 5
+| ori_adj_len: mu 121.54 sigma 94.04 | adj_len: 107.96 | prune_rate： 0.17 | qc_num: 7.43 | ac_num: 2.07 |
+| ori_adj_len: mu 118.44 sigma 90.55 | adj_len: 106.55 | prune_rate： 0.15 | qc_num: 7.20 | ac_num: 2.05 |
+| ori_adj_len: mu 119.20 sigma 93.49 | adj_len: 106.22 | prune_rate： 0.16 | qc_num: 7.38 | ac_num: 2.05 |
+train 666--22222
+train 7777
+<modeling.modeling_qagnn.LM_QAGNN_DataLoader object at 0x7f097c6f89e8>
+train 7777-11
+train 7777-22
+train 7777-33
+train 888
+train 999
+parameters:
+	concept_emb.emb.weight                       	fixed	torch.Size([799273, 1024])	device:cuda:0
+	concept_emb.cpt_transform.weight             	trainable	torch.Size([200, 1024])	device:cuda:0
+	concept_emb.cpt_transform.bias               	trainable	torch.Size([200])	device:cuda:0
+	svec2nvec.weight                             	trainable	torch.Size([200, 1024])	device:cuda:0
+	svec2nvec.bias                               	trainable	torch.Size([200])	device:cuda:0
+	gnn.emb_node_type.weight                     	trainable	torch.Size([100, 4])	device:cuda:0
+	gnn.emb_node_type.bias                       	trainable	torch.Size([100])	device:cuda:0
+	gnn.emb_score.weight                         	trainable	torch.Size([100, 100])	device:cuda:0
+	gnn.emb_score.bias                           	trainable	torch.Size([100])	device:cuda:0
+	gnn.edge_encoder.0.weight                    	trainable	torch.Size([200, 47])	device:cuda:0
+	gnn.edge_encoder.0.bias                      	trainable	torch.Size([200])	device:cuda:0
+	gnn.edge_encoder.1.weight                    	trainable	torch.Size([200])	device:cuda:0
+	gnn.edge_encoder.1.bias                      	trainable	torch.Size([200])	device:cuda:0
+	gnn.edge_encoder.3.weight                    	trainable	torch.Size([200, 200])	device:cuda:0
+	gnn.edge_encoder.3.bias                      	trainable	torch.Size([200])	device:cuda:0
+	gnn.gnn_layers.0.linear_key.weight           	trainable	torch.Size([200, 600])	device:cuda:0
+	gnn.gnn_layers.0.linear_key.bias             	trainable	torch.Size([200])	device:cuda:0
+	gnn.gnn_layers.0.linear_msg.weight           	trainable	torch.Size([200, 600])	device:cuda:0
+	gnn.gnn_layers.0.linear_msg.bias             	trainable	torch.Size([200])	device:cuda:0
+	gnn.gnn_layers.0.linear_query.weight         	trainable	torch.Size([200, 400])	device:cuda:0
+	gnn.gnn_layers.0.linear_query.bias           	trainable	torch.Size([200])	device:cuda:0
+	gnn.gnn_layers.0.mlp.0.weight                	trainable	torch.Size([200, 200])	device:cuda:0
+	gnn.gnn_layers.0.mlp.0.bias                  	trainable	torch.Size([200])	device:cuda:0
+	gnn.gnn_layers.0.mlp.1.weight                	trainable	torch.Size([200])	device:cuda:0
+	gnn.gnn_layers.0.mlp.1.bias                  	trainable	torch.Size([200])	device:cuda:0
+	gnn.gnn_layers.0.mlp.3.weight                	trainable	torch.Size([200, 200])	device:cuda:0
+	gnn.gnn_layers.0.mlp.3.bias                  	trainable	torch.Size([200])	device:cuda:0
+	gnn.gnn_layers.1.linear_key.weight           	trainable	torch.Size([200, 600])	device:cuda:0
+	gnn.gnn_layers.1.linear_key.bias             	trainable	torch.Size([200])	device:cuda:0
+	gnn.gnn_layers.1.linear_msg.weight           	trainable	torch.Size([200, 600])	device:cuda:0
+	gnn.gnn_layers.1.linear_msg.bias             	trainable	torch.Size([200])	device:cuda:0
+	gnn.gnn_layers.1.linear_query.weight         	trainable	torch.Size([200, 400])	device:cuda:0
+	gnn.gnn_layers.1.linear_query.bias           	trainable	torch.Size([200])	device:cuda:0
+	gnn.gnn_layers.1.mlp.0.weight                	trainable	torch.Size([200, 200])	device:cuda:0
+	gnn.gnn_layers.1.mlp.0.bias                  	trainable	torch.Size([200])	device:cuda:0
+	gnn.gnn_layers.1.mlp.1.weight                	trainable	torch.Size([200])	device:cuda:0
+	gnn.gnn_layers.1.mlp.1.bias                  	trainable	torch.Size([200])	device:cuda:0
+	gnn.gnn_layers.1.mlp.3.weight                	trainable	torch.Size([200, 200])	device:cuda:0
+	gnn.gnn_layers.1.mlp.3.bias                  	trainable	torch.Size([200])	device:cuda:0
+	gnn.gnn_layers.2.linear_key.weight           	trainable	torch.Size([200, 600])	device:cuda:0
+	gnn.gnn_layers.2.linear_key.bias             	trainable	torch.Size([200])	device:cuda:0
+	gnn.gnn_layers.2.linear_msg.weight           	trainable	torch.Size([200, 600])	device:cuda:0
+	gnn.gnn_layers.2.linear_msg.bias             	trainable	torch.Size([200])	device:cuda:0
+	gnn.gnn_layers.2.linear_query.weight         	trainable	torch.Size([200, 400])	device:cuda:0
+	gnn.gnn_layers.2.linear_query.bias           	trainable	torch.Size([200])	device:cuda:0
+	gnn.gnn_layers.2.mlp.0.weight                	trainable	torch.Size([200, 200])	device:cuda:0
+	gnn.gnn_layers.2.mlp.0.bias                  	trainable	torch.Size([200])	device:cuda:0
+	gnn.gnn_layers.2.mlp.1.weight                	trainable	torch.Size([200])	device:cuda:0
+	gnn.gnn_layers.2.mlp.1.bias                  	trainable	torch.Size([200])	device:cuda:0
+	gnn.gnn_layers.2.mlp.3.weight                	trainable	torch.Size([200, 200])	device:cuda:0
+	gnn.gnn_layers.2.mlp.3.bias                  	trainable	torch.Size([200])	device:cuda:0
+	gnn.gnn_layers.3.linear_key.weight           	trainable	torch.Size([200, 600])	device:cuda:0
+	gnn.gnn_layers.3.linear_key.bias             	trainable	torch.Size([200])	device:cuda:0
+	gnn.gnn_layers.3.linear_msg.weight           	trainable	torch.Size([200, 600])	device:cuda:0
+	gnn.gnn_layers.3.linear_msg.bias             	trainable	torch.Size([200])	device:cuda:0
+	gnn.gnn_layers.3.linear_query.weight         	trainable	torch.Size([200, 400])	device:cuda:0
+	gnn.gnn_layers.3.linear_query.bias           	trainable	torch.Size([200])	device:cuda:0
+	gnn.gnn_layers.3.mlp.0.weight                	trainable	torch.Size([200, 200])	device:cuda:0
+	gnn.gnn_layers.3.mlp.0.bias                  	trainable	torch.Size([200])	device:cuda:0
+	gnn.gnn_layers.3.mlp.1.weight                	trainable	torch.Size([200])	device:cuda:0
+	gnn.gnn_layers.3.mlp.1.bias                  	trainable	torch.Size([200])	device:cuda:0
+	gnn.gnn_layers.3.mlp.3.weight                	trainable	torch.Size([200, 200])	device:cuda:0
+	gnn.gnn_layers.3.mlp.3.bias                  	trainable	torch.Size([200])	device:cuda:0
+	gnn.gnn_layers.4.linear_key.weight           	trainable	torch.Size([200, 600])	device:cuda:0
+	gnn.gnn_layers.4.linear_key.bias             	trainable	torch.Size([200])	device:cuda:0
+	gnn.gnn_layers.4.linear_msg.weight           	trainable	torch.Size([200, 600])	device:cuda:0
+	gnn.gnn_layers.4.linear_msg.bias             	trainable	torch.Size([200])	device:cuda:0
+	gnn.gnn_layers.4.linear_query.weight         	trainable	torch.Size([200, 400])	device:cuda:0
+	gnn.gnn_layers.4.linear_query.bias           	trainable	torch.Size([200])	device:cuda:0
+	gnn.gnn_layers.4.mlp.0.weight                	trainable	torch.Size([200, 200])	device:cuda:0
+	gnn.gnn_layers.4.mlp.0.bias                  	trainable	torch.Size([200])	device:cuda:0
+	gnn.gnn_layers.4.mlp.1.weight                	trainable	torch.Size([200])	device:cuda:0
+	gnn.gnn_layers.4.mlp.1.bias                  	trainable	torch.Size([200])	device:cuda:0
+	gnn.gnn_layers.4.mlp.3.weight                	trainable	torch.Size([200, 200])	device:cuda:0
+	gnn.gnn_layers.4.mlp.3.bias                  	trainable	torch.Size([200])	device:cuda:0
+	gnn.Vh.weight                                	trainable	torch.Size([200, 200])	device:cuda:0
+	gnn.Vh.bias                                  	trainable	torch.Size([200])	device:cuda:0
+	gnn.Vx.weight                                	trainable	torch.Size([200, 200])	device:cuda:0
+	gnn.Vx.bias                                  	trainable	torch.Size([200])	device:cuda:0
+	pooler.w_qs.weight                           	trainable	torch.Size([200, 1024])	device:cuda:0
+	pooler.w_qs.bias                             	trainable	torch.Size([200])	device:cuda:0
+	pooler.w_ks.weight                           	trainable	torch.Size([200, 200])	device:cuda:0
+	pooler.w_ks.bias                             	trainable	torch.Size([200])	device:cuda:0
+	pooler.w_vs.weight                           	trainable	torch.Size([200, 200])	device:cuda:0
+	pooler.w_vs.bias                             	trainable	torch.Size([200])	device:cuda:0
+	fc.layers.0-Linear.weight                    	trainable	torch.Size([1, 1424])	device:cuda:0
+	fc.layers.0-Linear.bias                      	trainable	torch.Size([1])	device:cuda:0
+	total: 2845025
+
+-----------------------------------------------------------------------
+| step     9 |  lr: 0.0000100 | loss  1.6173 | ms/batch 14676.33 |
+| step    19 |  lr: 0.0000100 | loss  1.6197 | ms/batch 15038.12 |
+| step    29 |  lr: 0.0000100 | loss  1.5920 | ms/batch 15142.84 |
+| step    39 |  lr: 0.0000100 | loss  1.5466 | ms/batch 15344.11 |
+| step    49 |  lr: 0.0000100 | loss  1.5282 | ms/batch 15483.08 |
+| step    59 |  lr: 0.0000100 | loss  1.5190 | ms/batch 15826.81 |
+-----------------------------------------------------------------------
+| epoch   0 | step    67 | dev_acc  0.3735 | test_acc  0.3521 |
+-----------------------------------------------------------------------
+fout.write
+111save before
+save_model except
+Can't pickle typing.Union[torch.Tensor, NoneType]: it's not the same object as typing.Union
+111save after
+model saved to saved_models/csqa/enc-roberta-large__k5__gnndim200__bs128__seed0__20211009_182958/model.pt
+aaaaa model saved
+| step    69 |  lr: 0.0000100 | loss  1.4885 | ms/batch 4451.59 |
+| step    79 |  lr: 0.0000100 | loss  1.4662 | ms/batch 15934.79 |
+| step    89 |  lr: 0.0000100 | loss  1.4529 | ms/batch 15934.77 |
+| step    99 |  lr: 0.0000100 | loss  1.4719 | ms/batch 15790.50 |
+| step   109 |  lr: 0.0000100 | loss  1.4605 | ms/batch 15847.75 |
+| step   119 |  lr: 0.0000100 | loss  1.4472 | ms/batch 15736.77 |
+| step   129 |  lr: 0.0000100 | loss  1.4590 | ms/batch 15809.31 |
+-----------------------------------------------------------------------
+| epoch   1 | step   134 | dev_acc  0.4095 | test_acc  0.3932 |
+-----------------------------------------------------------------------
+fout.write
+111save before
+save_model except
+Can't pickle typing.Union[torch.Tensor, NoneType]: it's not the same object as typing.Union
+111save after
+model saved to saved_models/csqa/enc-roberta-large__k5__gnndim200__bs128__seed0__20211009_182958/model.pt
+aaaaa model saved
+| step   139 |  lr: 0.0000100 | loss  1.3871 | ms/batch 9109.64 |
+| step   149 |  lr: 0.0000100 | loss  1.4133 | ms/batch 15835.80 |
+| step   159 |  lr: 0.0000100 | loss  1.3973 | ms/batch 15732.56 |
+| step   169 |  lr: 0.0000100 | loss  1.3904 | ms/batch 15901.70 |
+| step   179 |  lr: 0.0000100 | loss  1.3927 | ms/batch 15847.23 |
+| step   189 |  lr: 0.0000100 | loss  1.3462 | ms/batch 15901.90 |
+| step   199 |  lr: 0.0000100 | loss  1.3200 | ms/batch 15968.03 |
+-----------------------------------------------------------------------
+| epoch   2 | step   201 | dev_acc  0.4423 | test_acc  0.4174 |
+-----------------------------------------------------------------------
+fout.write
+111save before
+save_model except
+Can't pickle typing.Union[torch.Tensor, NoneType]: it's not the same object as typing.Union
+111save after
+model saved to saved_models/csqa/enc-roberta-large__k5__gnndim200__bs128__seed0__20211009_182958/model.pt
+aaaaa model saved
+| step   209 |  lr: 0.0000100 | loss  1.3140 | ms/batch 13933.14 |
+| step   219 |  lr: 0.0000100 | loss  1.3426 | ms/batch 16030.03 |
+| step   229 |  lr: 0.0000100 | loss  1.3676 | ms/batch 15994.63 |
+| step   239 |  lr: 0.0000100 | loss  1.3387 | ms/batch 16156.05 |
+| step   249 |  lr: 0.0000100 | loss  1.2955 | ms/batch 15826.73 |
+| step   259 |  lr: 0.0000100 | loss  1.3440 | ms/batch 16085.68 |
+-----------------------------------------------------------------------
+| epoch   3 | step   268 | dev_acc  0.4488 | test_acc  0.4392 |
+-----------------------------------------------------------------------
+fout.write
+111save before
+save_model except
+Can't pickle typing.Union[torch.Tensor, NoneType]: it's not the same object as typing.Union
+111save after
+model saved to saved_models/csqa/enc-roberta-large__k5__gnndim200__bs128__seed0__20211009_182958/model.pt
+aaaaa model saved
+except
+CUDA out of memory. Tried to allocate 38.00 MiB (GPU 0; 10.91 GiB total capacity; 8.03 GiB already allocated; 8.38 MiB free; 8.34 GiB reserved in total by PyTorch)
