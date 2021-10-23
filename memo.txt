@@ -92,3 +92,6 @@ python preprocess.py -p <num_processes>
 也可以下載作者已經處理好的資料
 https://nlp.stanford.edu/projects/myasu/QAGNN/data_preprocessed_release.zip
 ===3. 訓練======================================================================================
+用一個中文知識圖譜
+https://blog.csdn.net/TimEcho/article/details/108403083?spm=1001.2101.3001.6650.1&utm_medium=distribute.pc_relevant.none-task-blog-2~default~CTRLIST~default-1.no_search_link&depth_1-utm_source=distribute.pc_relevant.none-task-blog-2~default~CTRLIST~default-1.no_search_link
+資料集(commensenseqa和open bookQA)中文翻譯
